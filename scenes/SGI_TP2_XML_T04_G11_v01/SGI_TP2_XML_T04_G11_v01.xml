@@ -1,0 +1,2893 @@
+<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<yaf> 
+    <!-- Credits of the original file go to Group 1, class 1 of course LAIG school year 2013/2014, FEUP, University of Porto -->
+
+    <globals background="0 0 0 1" ambient="0.1 0.1 0.1 1"/>
+    
+
+    <cameras initial="tennisCourt" > 
+        <perspective id="tennisCourt" 
+            angle="70" 
+            near="0.1" 
+            far="1000" 
+            location="15 15 15" 
+            target="0 0.0 0" /> 
+
+        <perspective id="chairCam" 
+            angle="60" 
+            near="0.1" 
+            far="1000" 
+            location="15 15 15" 
+            target="-0.5 2 15" />
+        <perspective id="buildingCam" 
+            angle="60" 
+            near="0.1" 
+            far="1000" 
+            location="15 15 15" 
+            target="0 10 -20" />
+        <orthogonal id="TopCam" 
+            near="0.1" 
+            far="1000" 
+            location="0 15 0" 
+            target="0.0 0 0.0" 
+            left="-100" 
+            right="100" 
+            bottom="-100" 
+            top="100" /> 
+
+        <perspective id="television" 
+            angle="60" 
+            near="0.1" 
+            far="1000" 
+            location="74 25 -15" 
+            target="50 20 10"  />
+    </cameras>
+    <skybox size="400 400 400" center="0 0 0" emissive="1.0 1.0 1.0 1.0" intensity="1.0" up="textures/skyhsky_up.png" 
+    down="textures/skyhsky_dn.png" left="textures/skyhsky_bk.png"
+    right="textures/skyhsky_ft.png"
+    front="textures/skyhsky_rt.png"
+    back="textures/skyhsky_lf.png"
+    />
+    <textures>        
+        <texture id="floorTex" filepath="textures/court.jpeg"/>
+        <texture id="netTex" filepath="textures/net.jpg"/>
+        <texture id="cement" filepath="textures/cement.jpg"/>
+        <texture id="rubberTex" filepath="textures/rubber.jpg"/>
+        <texture id="cementBump" filepath="textures/cementBump.jpg"/>
+        <texture id="tennisBallTex" filepath="textures/tennisBall.jpg"/>
+        <texture id="tennisBump" filepath="textures/tennisBump.jpg"/>
+        <texture id="bricksTex" filepath="textures/bricks.jpg" />
+        <texture id="stairsTex" filepath="textures/stairsTex.jpg"/>
+        <texture id="casa1Tex" filepath="textures/casa1.jpg"/>
+        <texture id="casa2Tex" filepath="textures/casa2.jpg"/>
+        <texture id="doorTex" filepath="textures/door1.jpg"/>
+        <texture id="lampTex" filepath="textures/lamp.jpg"/>
+        <texture id="wall2Tex" filepath="textures/wall2.jpg"/>
+        <texture id="wall2_bumpTex" filepath="textures/wall2_bump.jpg"/>
+        <texture id="wall3Tex" filepath="textures/wall3.jpg"/>
+        <texture id="meteorTex" filepath="textures/meteor.jpg"/>
+        <texture id="meteorBump" filepath="textures/meteorBump.jpg"/>
+        <texture id="b2pilar1" filepath="textures/b2_pilar1.jpg"/>
+        <texture id="b2pilar2" filepath="textures/b2_pilar2.jpg"/>
+        <texture id="blank_wall2" filepath="textures/blank_wall2.jpg"/>
+        
+        <texture id="buildingTex" filepath="textures/building.jpg"/>
+        <texture id="buildingTex2" filepath="textures/building2.jpg"/>
+        <texture id="blackTex" filepath="textures/black.jpg"/>
+        <texture id="federer" filepath="textures/federer.mp4" isVideo="true"/>
+    </textures> 
+
+
+    <materials>
+        <material id="bench-wood" 
+            color="0.737 0.474 0.329 1.0" 
+            emissive="0.0 0.0 0.0 0.0" 
+            specular="0 0 0 0" 
+            shininess="20" 
+            />
+        
+        <material id="bench-metal" 
+        color="0.6 0.6 0.6 1.0" 
+        emissive="0.0 0.0 0.0 0.0" 
+        specular="0 0 0 0" 
+        shininess="70" 
+        />
+
+        <material id="shoppingCartMaterial" 
+        color="0.6 0.6 0.6 1.0" 
+        emissive="0.0 0.0 0.0 0.0" 
+        specular="0 0 0 0" 
+        shininess="70" 
+        />
+
+        <material id="shoppingCartMaterial1" 
+        color="0.6 0.6 0.6 1.0" 
+        emissive="0.0 0.0 0.0 0.0" 
+        specular="0 0 0 0" 
+        shininess="70"
+        wireframe="true" 
+        />
+
+        <material id="tennisBallMaterial"
+        color="1 1 1 1.0"
+        emissive="0.0 0.0 0.0 0.0"
+        specular="0 0 0 0"
+        shininess="70"
+        textureref="tennisBump"
+        twosided = "true"
+        bumpref = "tennisBump"
+        bumpscale = "0.2"
+        />
+
+        <material id="wheelMaterial"
+        color="0.1 0.1 0.1 1.0"
+        emissive="0.0 0.0 0.0 0.0"
+        specular="0 0 0 0"
+        shininess="70"
+        />
+
+        <material id="tennisCourtMaterial"
+        emissive="0.0 0.0 0.0 1" 
+        color="1 1 1 1.0"  
+        specular="0 0 0 0" 
+        shininess="0" 
+        textureref="floorTex" 
+        texlength_s="30"
+        texlength_t="20"
+        twosided = "false"
+        />
+        
+        <material id="cementFloorMaterial1"
+        emissive="0.0 0.0 0.0 1"
+        color="0.8 0.8 0.8 1.0"
+        specular="0 0 0 0"
+        shininess="0"
+        textureref="cement"
+        texlength_s="10"
+        texlength_t="20"
+        twosided = "true"
+        bumpref="cementBump"
+        bumpscale="0.2"
+        specularref="cementBump"
+        />
+        <material id="cementFloorMaterial2"
+        emissive="0.0 0.0 0.0 1"
+        color="0.8 0.8 0.8 1.0"
+        specular="0 0 0 0"
+        shininess="0"
+        textureref="cement"
+        texlength_s="50"
+        texlength_t="10"
+        twosided = "true"
+        bumpref="cementBump"
+        bumpscale="0.2"
+        specularref="cementBump"
+        />
+        <material id="PostMaterial"
+        emissive="0.0 0.0 0.0 1"
+        color="0.1 0.1 0.1 1.0"
+        specular="1 1 1 0"
+        shininess="0.5"
+        twosided = "true"
+        />
+        <material id="netMaterial"
+        emissive="0.0 0.0 0.0 1"
+        color="0.8 0.8 0.8 1.0"
+        specular="0 0 0 0"
+        shininess="0"
+        wireframe="true"
+        textureref="netTex"
+        texlength_s="1"
+        texlength_t="1"
+        twosided = "true"
+        />
+        <material id="rubberMaterial"
+        emissive="0.0 0.0 0.0 1"
+        color="0.8 0.8 0.8 1.0"
+        specular="1 1 1 0"
+        shininess="0.5"
+        twosided = "true"
+        textureref="rubberTex"
+        texlength_s="1"
+        texlength_t="1"
+        />
+        <material id="chairMaterial"
+        emissive="0.0 0.0 0.0 1"
+        color="0.8 0.8 0.8 1.0"
+        specular="1 1 1 0"
+        shininess="0.5"
+        twosided = "true"
+        textureref="stairsTex"
+        />
+
+        <material id="bricksMaterial"
+        color="1 1 1 1"
+        specular="0 0 0 1"
+        emissive="0 0 0 1"
+        shininess="0"
+        twosided = "true"
+        textureref="bricksTex"
+        texlength_s="10"
+        texlength_t="1"
+        />
+
+        <material id="lampMaterial"
+        color="1 1 1 1"
+        specular="0 0 0 1"
+        emissive="0 0 0 1"
+        shininess="0"
+        twosided = "true"
+        textureref="lampTex"
+        />
+
+        <material id="house1Material"
+        color="1 1 1 1"
+        specular="0 0 0 1"
+        emissive="0 0 0 1"
+        shininess="0"
+        twosided = "false"
+        textureref="casa1Tex"
+        texlength_s="1"
+        texlength_t="2"
+        />
+
+        <material id="grassMaterial"
+        color="1 1 1 1"
+        specular="0 0 0 1"
+        emissive="0 0 0 1"
+        shininess="0"
+        twosided = "true"
+        textureref="meteorTex"
+        texlength_s="100"
+        texlength_t="100"
+        bumpref="meteorBump"
+        bumpscale="0.2"
+        specularref="meteorBump"
+        />
+
+        <material id="house1Material2"
+        color="0.57578125 0.14609375 0.0484375 1"
+        specular="0 0 0 1"
+        emissive="0 0 0 1"  
+        shininess="0"
+        twosided = "true"
+        />
+
+        <material id="house1Material_floor"
+        color="1 1 1 1"
+        specular="0 0 0 1"
+        emissive="0 0 0 1"
+        shininess="0"
+        twosided = "false"
+        textureref="casa2Tex"
+        texlength_s="3"
+        texlength_t="1"
+        />
+
+        
+        <material id="house1Material_roof"
+            color="0.945098039 0.862745098 0.78823529 1"
+            specular="1 1 1 1"
+            emissive="0 0 0 1"
+            shininess="5"
+            twosided = "false"
+        />
+
+        <material id="house1Material_roof_floor"
+            color="0.02 0.02 0.05 1"
+            specular="0 0 0 1"
+            emissive="0 0 0 1"
+            shininess="0"
+            twosided = "false"
+        />
+        
+
+        <material id="b_windoh1"
+        color="0.02 0.02 0.05 1"
+        specular="0 0 0 1"
+        emissive="0 0 0 1"
+        shininess="0"
+        twosided = "false"
+        />
+
+        <material id="glass"
+        color="0.623529411 0.98823529 0.9921568627 1"
+        specular="1 1 1 1"
+        emissive="0 0 0 1"
+        shininess="80"
+        twosided = "false"
+        />
+
+        <material id="door"
+            color="1 1 1 1"
+            specular="0 0 0 1"
+            emissive="0 0 0 1"
+            shininess="10"
+            twosided = "false"
+            textureref="doorTex"
+            texlength_s="5"
+            texlength_t="10"
+        />
+
+        <material id="wall2"
+            color="1 1 1 1"
+            specular="0 0 0 1"
+            emissive="0 0 0 1"
+            shininess="10"
+            twosided = "true"
+            textureref="wall2Tex"
+            texlength_s="15"
+            texlength_t="10"/>
+
+        <material id="wall3"
+            color="1 1 1 1"
+            specular="0 0 0 1"
+            emissive="0 0 0 1"
+            shininess="10"
+            twosided = "true"
+            textureref="wall3Tex"
+            texlength_s="20"
+            texlength_t="10"
+             />
+        
+        <material id="floor2"
+            color="0.08039215 0.0647058 0.13137254 1"
+            specular="0 0 0 1"
+            emissive="0 0 0 1"
+            shininess="10"
+            twosided = "false"/>
+
+        <material id="b2pilar1"
+            color="1 1 1 1"
+            specular="0 0 0 1"
+            emissive="0 0 0 1"
+            shininess="0"
+            twosided = "true"
+            textureref="b2pilar1"
+            texlength_s="3.5"
+            texlength_t="10"
+             />
+
+        <material id="b2pilar2"
+            color="1 1 1 1"
+            specular="0 0 0 1"
+            emissive="0 0 0 1"
+            shininess="0"
+            twosided = "true"
+            textureref="b2pilar2"
+            texlength_s="3.5"
+            texlength_t="10"
+             />
+
+        <material id="blank_wall"
+            color="1 1 1 1"
+            specular="0 0 0 1"
+            emissive="0 0 0 1"
+            shininess="0"
+            twosided = "true"
+            textureref="blank_wall2"
+            texlength_s="13"
+            texlength_t="10"
+            />
+
+        <material id="pretendBuildingMaterial"
+            color="1 1 1 1"
+            specular="0 0 0 1"
+            emissive="0 0 0 1"
+            shininess="0"
+            twosided = "true"
+            textureref="buildingTex"
+            texlength_s="40"
+            texlength_t="40"
+             />
+
+        <material id="pretendBuildingMaterial2"
+            color="1 1 1 1"
+            specular="0 0 0 1"
+            emissive="0 0 0 1"
+            shininess="0"
+            twosided = "true"
+            textureref="buildingTex2"
+            texlength_s="40"
+            texlength_t="40"
+             />
+        <material id="blackMaterial"
+            color="0 0 0 1"
+            specular="0 0 0 1"
+            emissive="0 0 0 1"
+            shininess="10"
+            twosided = "true"
+            textureref="blackTex"
+            texlength_s="40"
+            texlength_t="20"
+             />
+
+        <material id="federer"
+            color="1 1 1 1"
+            specular="0 0 0 1"
+            emissive="0 0 0 1"
+            shininess="0"
+            twosided = "false"
+            textureref="federer"
+            texlength_s="5"
+            texlength_t="3"
+            />
+
+    </materials>
+
+    <graph rootid="scene">
+
+        <lod id="buildingLod" near="0" far="1000">
+            <noderef id="building1" mindist="20"/>
+            <noderef id="pretendBuilding" mindist="150"/>
+        </lod>
+
+        <node id="scene" castshadows = "true"  receiveshadows="true" >
+            <children>
+                <noderef id="tennisCourt" />
+                <noderef id="cementFloor" />
+                <noderef id="netComposite" />
+                <noderef id="benchs" />
+                <noderef id="shoppingCart" />
+                <noderef id="umpireChair" />
+                <noderef id="holofotes" />
+                <noderef id="walls"/>
+                <noderef id="ground"/>
+
+                <spotlight id="postLamp1" enabled="true" 
+                    color="1.0 1.0 1.0 1" 
+                    intensity="1000"
+                    distance="1000"
+                    decay="2.0"
+                    castshadow="true"
+                    position="15 12 11.3" 
+                    target="10 0 5"
+                    penumbra="1.0"
+                    angle="0.872664626"
+                />
+
+                <spotlight id="postLamp2" enabled="true" 
+                    color="1.0 1.0 1.0 1" 
+                    intensity="1000"
+                    distance="1000"
+                    decay="2.0"
+                    castshadow="true"
+                    position="15 12 -11.3" 
+                    target="10 0 -5"
+                    penumbra="1.0"
+                    angle="0.872664626"
+                />
+
+                <spotlight id="postLamp3" enabled="true" 
+                    color="1.0 1.0 1.0 1" 
+                    intensity="1000"
+                    distance="1000"
+                    decay="2.0"
+                    castshadow="true"
+                    position="-15 12 -11.3" 
+                    target="-10 0 -5"
+                    penumbra="1.0"
+                    angle="0.872664626"
+                />
+                <spotlight id="postLamp4" enabled="true" 
+                    color="1.0 1.0 1.0 1" 
+                    intensity="1000"
+                    distance="1000"
+                    decay="2.0"
+                    castshadow="true"
+                    position="-15 12 11.3" 
+                    target="-10 0 5"
+                    penumbra="1.0"
+                    angle="0.872664626"
+                />
+                <directionallight id="jupiterLight" enabled="true" 
+                    color="1.0 0.64 0 1" 
+                    intensity="1.5"
+                    castshadow="true"
+                    position="200 150 -200"
+                    shadowmapsize="16192"
+                    shadowtop="500"
+                    shadowbottom="-500"
+                    shadowleft="-500"
+                    shadowright="500"
+
+
+                />
+            </children>
+
+        </node>
+
+        <node id="ground">
+            
+            <children>
+                <noderef id="grass"/>
+                <lodref id="buildingLod"/>
+                <noderef id= "building2"/>
+            </children>
+        </node>
+
+        <node id="grass">
+            <transforms>
+                <translate value3="0 -0.3 0"/>
+                <rotate value3="1.57 0 0"/>
+            </transforms>
+
+            <materialref id="grassMaterial"/>
+
+            <children>
+                <primitive>
+                    <rectangle xy1="-200 -200" xy2="200 200" />
+                </primitive>
+            </children>
+
+        </node>
+
+        <node id="a_floor">
+            <transforms>
+                <translate value3="-0.5 10 0.5"/>
+            </transforms>
+
+            <materialref id="floor2"/>
+
+            <children>
+                <primitive>
+                    <box xyz1="0 0 0" xyz2="16 0.5 -21" />
+                </primitive>
+            </children>
+        </node>
+
+        <node id="a_wall1">
+
+            <materialref id="wall2"/>
+
+            <children>
+                <primitive>
+                    <rectangle xy1="0 0" xy2="15 10" />
+                </primitive>
+            </children>
+
+        </node>
+
+        <node id="a_wall2">
+            <transforms>
+                <rotate value3="0 3.1416 0"/>
+                <translate value3="15 0 -20"/>
+            </transforms>
+            <materialref id="wall2"/>
+
+            <children>
+                <primitive>
+                    <rectangle xy1="0 0" xy2="15 10" />
+                </primitive>
+            </children>
+
+        </node>
+
+        <node id="a_wall3">
+            <transforms>
+                <rotate value3="0 1.5708 0"/>
+                <translate value3="15 0 0"/>
+            </transforms>
+            <materialref id="wall3"/>
+
+            <children>
+                <primitive>
+                    <rectangle xy1="0 0" xy2="20 10" />
+                </primitive>
+            </children>
+
+        </node>
+
+        <node id="a_wall4">
+            <transforms>
+                <rotate value3="0 -1.5708 0"/>
+                <translate value3="0 0 -20"/>
+            </transforms>
+            <materialref id="wall3"/>
+
+            <children>
+                <primitive>
+                    <rectangle xy1="0 0" xy2="20 10" />
+                </primitive>
+            </children>
+
+        </node>
+        
+        <node id="building2">
+            <transforms>
+                <translate value3="60 0 0"/>
+            </transforms>
+
+            <children>
+                <noderef id="a_piso1"/>
+                <noderef id="a_piso2"/>
+                <noderef id="a_piso3"/>
+                
+
+            </children>
+        </node>
+
+        
+
+        <node id = "a_roof_bot">
+            <materialref id="house1Material_roof_floor"/>
+            <children>
+                <primitive>
+                    <box xyz1="1 0 -1" xyz2="14 0.5 -19"  />
+                </primitive>
+            </children>
+        </node>
+
+        
+        <node id = "a_roof">
+            <materialref id="house1Material_roof"/>
+            <transforms>
+                <translate value3="0 10 0"/>
+            </transforms>
+
+            <children>
+                <primitive>
+                    <box xyz1="1 0 -1" xyz2="15 1.5 0"  />
+                </primitive>
+
+                
+                <primitive>
+                    <box xyz1="1 0 -19" xyz2="15 1.5 -20"  />
+                </primitive>
+
+                
+                <primitive>
+                    <box xyz1="0 0 -20" xyz2="1 1.5 0"  />
+                </primitive>
+                <primitive>
+                    <box xyz1="14 0 -19" xyz2="15 1.5 0"  />
+                </primitive>
+
+                <noderef id="a_roof_bot"/>
+
+            </children>
+        </node>
+
+        <node id ="a_wall4_p1">
+
+            <transforms>
+                <rotate value3="0 -1.5708 0"/>
+                <translate value3="0 0 -20"/>
+            </transforms>
+
+            <materialref id="b2pilar1"/>
+
+            <children>
+                <primitive>
+                    <rectangle xy1="0 0" xy2="3.5 10" />
+                </primitive>
+            </children>
+        </node>
+
+        <node id ="a_wall4_p2">
+
+            <transforms>
+                <rotate value3="0 -1.5708 0"/>
+                <translate value3="0 0 -20"/>
+            </transforms>
+
+            <materialref id="b2pilar2"/>
+
+            <children>
+                <primitive>
+                    <rectangle xy1="16.5 0" xy2="20 10" />
+                </primitive>
+            </children>
+        </node>
+
+        <node id ="a_wall4_window">
+
+            <transforms>
+            </transforms>
+
+
+            <children>
+                <noderef id="a_wall4_p1"/>
+                <noderef id="a_wall4_p2"/>
+                <noderef id="a_group_window_transparent"/>
+                <noderef id="wall_part1"/>
+            </children>
+        </node>
+
+
+        <node id = "a_window_1_transp">
+            <transforms>
+                <rotate value3="0 -1.5708 0"/>
+                <translate value3="-0.01 1 -14.5"/>
+                
+            </transforms>
+
+            <children>
+                <noderef id="b_window" />
+            </children>
+        </node>
+
+        <node id = "a_window_2_transp">
+            <transforms>
+                <rotate value3="0 -1.5708 0"/>
+                <translate value3="0 1 -11"/>
+                
+            </transforms>
+
+            <children>
+                <noderef id="b_window" />
+            </children>
+        </node>
+
+        <node id = "wall_part1">
+            <transforms>
+                
+                <rotate value3="0 -1.5708 0"/>
+            </transforms>
+
+            <materialref id="blank_wall"/>
+            <children>
+                <primitive>
+                    <rectangle xy1="-3.5 0" xy2="-17.5 1.1"/>
+                </primitive>
+
+                <primitive>
+                    <rectangle xy1="-3.5 8.6" xy2="-17.5 10"/>
+                </primitive>
+
+                <primitive>
+                    <rectangle xy1="-3.5 1.1" xy2="-6 9"/>
+                </primitive>
+
+                <primitive>
+                    <rectangle xy1="-14 1.1" xy2="-16.5 9"/>
+                </primitive>
+            </children>
+        </node>
+
+
+        <node id = "a_group_window_transparent">
+            <transforms>
+                
+                <translate value3="0 0 0.2"/>
+            </transforms>
+
+            <children>
+                <noderef id="a_window_1_transp" />
+                <noderef id="a_window_2_transp" />
+            </children>
+        </node>
+
+        <node id="tela">
+            <transforms>
+                <translate value3="0 0 0"/>
+            </transforms>
+            <materialref id="federer"/>
+
+            <children>
+                <primitive>
+                    <rectangle xy1="0 0" xy2="5 3"/>
+                </primitive>
+
+            </children>
+        </node>
+
+        <node id = "television">
+            <transforms>
+                <translate value3="11 3 -0.21"/>
+                <rotate value3="0 3.1416 0"/>
+            </transforms>
+            <materialref id="blackMaterial"/>
+            <children>
+                <noderef id="tela"/>
+
+                <primitive>
+                    <box xyz1="0 0 0" xyz2="5 0.1 0.2"/>
+                </primitive>
+                
+                <primitive>
+                    <box xyz1="0 3 0" xyz2="5 3.1 0.2"/>
+                </primitive>
+
+                <primitive>
+                    <box xyz1="0 0 0" xyz2="0 3 0.2"/>
+                </primitive>
+
+                <primitive>
+                    <box xyz1="5 0 0" xyz2="5 3 0.2"/>
+                </primitive>
+            </children>
+        </node>
+
+
+        <node id = "a_piso3">
+            <transforms>
+                <translate value3="0 20 0"/>
+            </transforms>
+            <children>
+                <noderef id="a_wall1"/>
+                <noderef id="a_wall2"/>
+                <noderef id="a_wall3"/>
+                <noderef id="a_wall4_window"/>
+                <noderef id="a_roof"/>
+                <noderef id="television"/>
+
+                <pointlight id="casa" enabled="true" 
+                    color="1 1 1 1" 
+                    intensity="300.0"
+                    distance="100"
+                    decay="2.0"
+                    castshadow="true"
+                    position="7 7 -8" 
+                /> 
+            </children>
+        </node>
+
+        <node id = "a_window_1">
+            <transforms>
+                <rotate value3="0 -1.5708 0"/>
+                <translate value3="-0.01 1 -14.5"/>
+                
+            </transforms>
+
+            <children>
+                <noderef id="b_window" />
+            </children>
+        </node>
+
+        <node id = "a_window_2">
+            <transforms>
+                <rotate value3="0 -1.5708 0"/>
+                <translate value3="-0.01 1 -11"/>
+                
+            </transforms>
+
+            <children>
+                <noderef id="b_window" />
+            </children>
+        </node>
+
+        <node id = "a_group_window_1">
+            <transforms>
+                
+                <translate value3="0 0 0.2"/>
+            </transforms>
+
+            <children>
+                <noderef id="a_window_1" />
+                <noderef id="a_window_2" />
+            </children>
+        </node>
+
+
+        <node id = "a_piso2">
+            <transforms>
+                <translate value3="0 10 0"/>
+            </transforms>
+            <children>
+                <noderef id="a_wall1"/>
+                <noderef id="a_wall2"/>
+                <noderef id="a_wall3"/>
+                <noderef id="a_wall4"/>
+                <noderef id="a_floor"/>
+                
+                <noderef id="a_group_window_1" />
+            </children>
+        </node>
+
+        <node id = "a_piso1">
+            <children>
+                <noderef id="a_wall1"/>
+                <noderef id="a_wall2"/>
+                <noderef id="a_wall3"/>
+                <noderef id="a_wall4"/>
+                <noderef id="a_floor"/>
+                <noderef id="b_doors"/>
+            </children>
+        </node>
+
+        <node id="b_doors">
+            <transforms>
+                <translate value3="1.4 0 -11.6"/>
+                <rotate value3="0 -1.5708 0"/>
+                <scale value3="0.8 0.8 0.8"/>
+            </transforms>
+
+            <children>
+                
+                <noderef id="b_door1"/>
+                <noderef id="b_door2"/>
+
+            </children>
+        </node>
+
+        <node id="building1">
+            <transforms>
+                <translate value3="0 0 -60"/>
+            </transforms>
+
+            <children>
+                <noderef id="b_pilar1" />
+                <noderef id="b_pilar2" />
+                <noderef id="b_pilar3" />
+                <noderef id="b_pilar4" />
+                <noderef id="b_pilar5" />
+                <noderef id="b_pilar6" />
+                <noderef id="b_pilar7" />
+                <noderef id="b_caixa" />
+                <noderef id="b_group_window_1" />
+                <noderef id="b_group_window_2" />
+                <noderef id="b_group_window_3" />
+                <noderef id="b_group_window_4" />
+                <noderef id="b_floor1" />
+                <noderef id="b_floor2" />
+                <noderef id="b_floor3" />
+                <noderef id="b_floor3_bot" />
+                <noderef id="b_door1"/>
+                <noderef id="b_door2"/>
+            </children>
+        </node>
+
+        
+        <node id="b_door1">
+            <transforms>
+                <translate value3="-3 0 2.1"/>
+            </transforms>    
+
+            <materialref id="door"/>
+            <children>
+                <primitive>
+                    <rectangle xy1="0 0" xy2="5 10"/>
+                </primitive>
+            </children>
+        </node>
+
+        <node id="b_door2">
+            <transforms>
+                <scale value3="-1 1 1"/>
+                <translate value3="7 0 2.1"/>
+            </transforms>    
+
+            <materialref id="door"/>
+            <children>
+                <primitive>
+                    <rectangle xy1="0 0" xy2="5 10"/>
+                </primitive>
+            </children>
+        </node>
+
+        <node id="b_group_window_1">
+
+            <children>
+                <noderef id="b_window1" />
+                <noderef id="b_window2" />
+                <noderef id="b_window3" />
+                <noderef id="b_window4" />
+            </children>
+        </node>
+
+        <node id="b_group_window_2">
+            <transforms>
+                <translate value3="30 0 0"/>
+            </transforms>
+            <children>
+                <noderef id="b_window1" />
+                <noderef id="b_window2" />
+                <noderef id="b_window3" />
+                <noderef id="b_window4" />
+            </children>
+        </node>
+
+        <node id="b_group_window_3">
+            <transforms>
+                <translate value3="12.5 0 0"/>
+            </transforms>
+            <children>
+                <noderef id="b_window2" />
+                <noderef id="b_window3" />
+                <noderef id="b_window4" />
+            </children>
+        </node>
+
+        <node id="b_group_window_4">
+            <transforms>
+                <translate value3="16.5 0 0"/>
+            </transforms>
+            <children>
+                <noderef id="b_window2" />
+                <noderef id="b_window3" />
+                <noderef id="b_window4" />
+            </children>
+        </node>
+
+
+
+        <node id= "b_floor1">
+            <transforms>
+                <translate value3="-21 12.7 -41"/>
+            </transforms>
+            <materialref id="house1Material_floor"/>
+            <children>
+                <primitive>
+                    <box xyz1="0 0 0" xyz2="46 1.5 46"  />
+                </primitive>
+            </children>
+        </node>
+
+        
+        <node id= "b_floor2">
+            <transforms>
+                <translate value3="-21 30 -41"/>
+            </transforms>
+            <materialref id="house1Material_floor"/>
+            <children>
+                <primitive>
+                    <box xyz1="0 0 0" xyz2="46 1.5 46"  />
+                </primitive>
+            </children>
+        </node>
+
+        <node id="b_floor3_bot">
+
+            <transforms>
+                <translate value3="-19 40 -39"/>
+            </transforms>
+            <materialref id="house1Material_roof_floor"/>
+            
+            <children>
+                <primitive>
+                    <box xyz1="0 0 0" xyz2="42 1 42"  />
+                </primitive>
+            </children>
+        </node>
+
+        <node id= "b_floor3">
+            <transforms>
+                <translate value3="-20 40 -40"/>
+            </transforms>
+            <materialref id="house1Material_roof"/>
+            <children>
+                <primitive>
+                    <box xyz1="0 0 0" xyz2="44 3 1"  />
+                </primitive>
+
+                <primitive>
+                    <box xyz1="0 0 0" xyz2="1 3 44"  />
+                </primitive>
+
+                <primitive>
+                    <box xyz1="43 0 0" xyz2="44 3 44"  />
+                </primitive>
+
+                <primitive>
+                    <box xyz1="0 0 43" xyz2="44 3 44"  />
+                </primitive>
+            </children>
+        </node>
+
+        <node id="glass">
+            <transforms>
+                <translate value3="0.5 0.5 0.1"/>
+
+            </transforms>
+            <materialref id="glass"/>
+            <children>
+                <primitive>
+                    <rectangle xy1="0 0" xy2="3.5 7"/>
+                </primitive>
+            </children>
+        </node>
+
+        <node id="b_window">
+            <materialref id="b_windoh1"/>
+            <transforms>
+                <translate value3="0 0 0"/>
+            </transforms>
+            <children>
+                <primitive>
+                    <box xyz1="0 0 0" xyz2="5 0.7 0.2"  />
+                </primitive>
+
+                <primitive>
+                    <box xyz1="0 7 0" xyz2="5 7.7 0.2"  />
+                </primitive>
+
+                <noderef id="glass" />
+
+                <primitive>
+                    <box xyz1="0 3.5 0" xyz2="5 4.2 0.2"  />
+                </primitive>
+                
+                <primitive>
+                    <box xyz1="0 0.5 0" xyz2="1 7 0.5"  />
+                </primitive>
+
+                <primitive>
+                    <box xyz1="4 0.5 0" xyz2="5 7 0.5"  />
+                </primitive>
+                
+            </children>
+        </node>
+
+        <node id="b_window1">
+            <materialref id="b_windoh1"/>
+            <transforms>
+                <translate value3="-15.5 4 2"/>
+            </transforms>
+            <children>
+                <noderef id = "b_window" />
+            </children>
+        </node>
+
+        <node id="b_window2">
+            <materialref id="b_windoh1"/>
+            <transforms>
+                <translate value3="-15.5 15 2"/>
+            </transforms>
+            <children>
+                <noderef id = "b_window" />
+            </children>
+        </node>
+
+        <node id="b_window3">
+            <materialref id="b_windoh1"/>
+            <transforms>
+                <translate value3="-15.5 23 2"/>
+                <scale value3="1 0.8 1"/>
+            </transforms>
+            <children>
+                <noderef id = "b_window" />
+            </children>
+        </node>
+
+        <node id="b_window4">
+            <materialref id="b_windoh1"/>
+            <transforms>
+                <translate value3="-15.5 32 2"/>
+            </transforms>
+            <children>
+                <noderef id = "b_window" />
+            </children>
+        </node>
+
+        <node id="b_caixa">
+            <materialref id="house1Material2"/>
+            <transforms>
+                <translate value3="-18 0 -38"/>
+            </transforms>
+            <children>
+                <primitive>
+                    <box xyz1="0 0 0" xyz2="40 40 40"  />
+                </primitive>
+            </children>
+        </node>
+        <node id = "b_pilar">
+            <materialref id="house1Material"/>
+
+            <children>
+                <primitive>
+                    <box xyz1="0 0 0" xyz2="4 40 4"  />
+                </primitive>
+            </children>
+        </node>
+
+        <node id="b_pilar1">
+
+            <transforms>
+                <translate value3="-20 0 0"/>
+            </transforms>
+            
+            <children>
+                <noderef id="b_pilar" />
+            </children>
+        </node>
+        <node id="b_pilar2">
+
+            <transforms>
+                <translate value3="-10 0 0"/>
+            </transforms>
+            
+            
+            <children>
+                <noderef id="b_pilar" />
+            </children>
+        </node>
+        <node id="b_pilar3">
+
+            <transforms>
+                <translate value3="10 0 0"/>
+            </transforms>
+            
+            
+            <children>
+                <noderef id="b_pilar" />
+            </children>
+        </node>
+
+        <node id="b_pilar4">
+
+            <transforms>
+                <translate value3="20 0 0"/>
+            </transforms>
+            
+            
+            <children>
+                <noderef id="b_pilar" />
+            </children>
+        </node>
+
+        <node id="b_pilar5">
+
+            <transforms>
+                <translate value3="-20 0 -40"/>
+            </transforms>
+            
+            <children>
+                <noderef id="b_pilar" />
+            </children>
+        </node>
+
+        <node id="b_pilar6">
+
+            <transforms>
+                <translate value3="20 0 -40"/>
+            </transforms>
+            
+            <children>
+                <noderef id="b_pilar" />
+            </children>
+        </node>
+
+        <node id="walls">
+            <children>
+                <noderef id="wall1" />
+                <noderef id="wall2" />
+                <noderef id="wall3" />
+                <noderef id="wall4" />
+            </children>
+        </node>
+
+        <node id="wallPost1">
+            <transforms>
+                <translate value3="0 2.5 0"/>
+            </transforms>
+
+            <materialref id="PostMaterial"/>
+            <children>
+                <primitive>
+                    <cylinder base="0.1" top="0.1" height="5" slices="20" stacks="20" />
+                </primitive>
+            </children>
+        </node>
+        <node id="wallPost2">
+            <transforms>
+                <translate value3="10 2.5 0"/>
+            </transforms>
+
+            <materialref id="PostMaterial"/>
+            <children>
+                <primitive>
+                    <cylinder base="0.1" top="0.1" height="5" slices="20" stacks="20" />
+                </primitive>
+            </children>
+        </node>
+        <node id="wallPost3">
+            <transforms>
+                <translate value3="20 2.5 0"/>
+            </transforms>
+
+            <materialref id="PostMaterial"/>
+            <children>
+                <primitive>
+                    <cylinder base="0.1" top="0.1" height="5" slices="20" stacks="20" />
+                </primitive>
+            </children>
+        </node>
+
+        <node id="wallPost7">
+            <transforms>
+                <translate value3="22.5 2.5 0"/>
+            </transforms>
+
+            <materialref id="PostMaterial"/>
+            <children>
+                <primitive>
+                    <cylinder base="0.1" top="0.1" height="5" slices="20" stacks="20" />
+                </primitive>
+            </children>
+        </node> 
+
+        <node id="wallPost8">
+            <transforms>
+                <translate value3="27.5 2.5 0"/>
+            </transforms>
+
+            <materialref id="PostMaterial"/>
+            <children>
+                <primitive>
+                    <cylinder base="0.1" top="0.1" height="5" slices="20" stacks="20" />
+                </primitive>
+            </children>
+        </node> 
+
+        <node id="wallPost4">
+            <transforms>
+                <translate value3="30 2.5 0"/>
+            </transforms>
+
+            <materialref id="PostMaterial"/>
+            <children>
+                <primitive>
+                    <cylinder base="0.1" top="0.1" height="5" slices="20" stacks="20" />
+                </primitive>
+            </children>
+        </node>
+        <node id="wallPost5">
+            <transforms>
+                <translate value3="40 2.5 0"/>
+            </transforms>
+
+            <materialref id="PostMaterial"/>
+            <children>
+                <primitive>
+                    <cylinder base="0.1" top="0.1" height="5" slices="20" stacks="20" />
+                </primitive>
+            </children>
+        </node>
+        <node id="wallPost6">
+            <transforms>
+                <translate value3="49 2.5 0"/>
+            </transforms>
+
+            <materialref id="PostMaterial"/>
+            <children>
+                <primitive>
+                    <cylinder base="0.1" top="0.1" height="5" slices="20" stacks="20" />
+                </primitive>
+            </children>
+        </node>
+
+        
+
+        <node id="wallNet1">
+            <transforms>
+                <translate value3="0.5 3 0.5"/>
+            </transforms> 
+
+            <materialref id="netMaterial" />
+            
+            <children>             
+                <primitive>
+                    <rectangle xy1="0 0" xy2="49 5" parts_x="100" parts_y="20" />
+                </primitive>
+
+                <noderef id="wallPost1" />
+                <noderef id="wallPost2" />
+                <noderef id="wallPost3" />
+                <noderef id="wallPost4" />
+                <noderef id="wallPost5" />
+                <noderef id="wallPost6" />
+            </children>
+        </node>
+
+        <node id="wallNet3">
+            <transforms>
+                <translate value3="-20.5 3 0.5"/>
+            </transforms> 
+
+            <materialref id="netMaterial" />
+            
+            <children>             
+                <primitive>
+                    <rectangle xy1="0 0" xy2="40 5" parts_x="100" parts_y="20" />
+                </primitive>
+
+                <noderef id="wallPost2" />
+                <noderef id="wallPost3" />
+                <noderef id="wallPost4" />
+            </children>
+        </node>
+
+        <node id="wallNet2">
+            <transforms>
+                <translate value3="0.5 3 0.5"/>
+            </transforms> 
+
+            <materialref id="netMaterial" />
+            
+            <children>             
+                <primitive>
+                    <rectangle xy1="0 0" xy2="22.5 5" parts_x="100" parts_y="20" />
+                </primitive>
+                <primitive>
+                    <rectangle xy1="27.5 0" xy2="49 5" parts_x="100" parts_y="20" />
+                </primitive>
+
+                <noderef id="wallPost1" />
+                <noderef id="wallPost2" />
+                <noderef id="wallPost3" />
+                <noderef id="wallPost4" />
+                <noderef id="wallPost5" />
+                <noderef id="wallPost6" />
+                <noderef id="wallPost7" />
+                <noderef id="wallPost8" />
+            </children>
+        </node>
+
+        <node id="wall1">
+            <transforms>
+                <translate value3="-25 0 20"/>
+                <rotate value3="0 0 0" />
+            </transforms> 
+
+            <materialref id="bricksMaterial" />
+            
+            <children>             
+                <primitive>
+                    <box xyz1="0 0 0" xyz2="50 3 1" />
+                </primitive>
+
+                <noderef id="wallNet1" />
+            </children>
+        </node>
+
+        <node id="wall2">
+            <transforms>
+                <translate value3="-25 0 -20"/>
+                <rotate value3="0 0 0" />
+            </transforms> 
+
+            <materialref id="bricksMaterial" />
+            
+            <children>             
+                <primitive>
+                    <box xyz1="0 0 0" xyz2="23.5 3 1" />
+                </primitive>
+                <primitive>
+                    <box xyz1="27.5 0 0" xyz2="50 3 1" />
+                </primitive>
+
+                <noderef id="wallNet2" />
+            </children>
+        </node>
+
+        <node id="wall3">
+            <transforms>
+                <translate value3="24 0 0"/>
+                <rotate value3="0 1.57 0" />
+            </transforms> 
+
+            <materialref id="bricksMaterial" />
+            
+            <children>             
+                <primitive>
+                    <box xyz1="-20.99 0 0" xyz2="19.99 3 1.01" />
+                </primitive>
+                <noderef id="wallNet3" />
+
+            </children>
+            
+        </node>
+
+        <node id="wall4">
+            <transforms>
+                <translate value3="-25.01 0 0"/>
+                <rotate value3="0 1.57 0" />
+            </transforms> 
+
+            
+            <materialref id="bricksMaterial" />
+            
+            <children>             
+                <primitive>
+                    <box xyz1="-20.99 0 0" xyz2="19.99 3 1.01" />
+                </primitive>
+                <noderef id="wallNet3" />
+
+            </children>
+        </node>
+        
+        <node id="benchs">
+            <children>
+                <noderef id="bench1" />
+                <noderef id="bench2" />
+                <noderef id="bench3" />
+                <noderef id="bench4" />
+            </children>
+
+        </node>
+
+        
+        <node id="bench1">
+            <transforms>
+                <translate value3="-8 1 -15"/>
+            </transforms>
+
+            <children>    
+                <noderef id="bench" /> 
+            </children>
+        </node>
+
+        <node id="bench2">
+            <transforms>
+                <translate value3="8 1 -15"/>
+            </transforms>
+
+            <children>    
+                <noderef id="bench" /> 
+            </children>
+        </node>
+
+        <node id="bench3">
+            <transforms>
+                <translate value3="-8 1 15"/>
+                <scale value3="1 1 -1"/>
+            </transforms>
+
+            <children>    
+                <noderef id="bench" /> 
+            </children>
+        </node>
+
+        <node id="bench4">
+            <transforms>
+                <translate value3="8 1 15"/>
+                <scale value3="1 1 -1"/>
+            </transforms>
+
+            <children>    
+                <noderef id="bench" /> 
+            </children>
+        </node>
+
+        <node id="bench">
+            <transforms>
+                <scale value3="0.5 0.5 0.5"/>
+            </transforms>
+
+            <children>    
+                <noderef id="bench-S" /> 
+                <noderef id="bench-M" /> 
+                <noderef id="bench-L" /> 
+            </children>
+        </node>
+
+        <node id="tennisCourt" receiveshadows="true">
+            <transforms>
+                <translate value3="-15 0 10" />
+                <rotate value3="-1.57 0.0 0.0" />
+            </transforms> 
+
+            <materialref id="tennisCourtMaterial" />
+            
+            <children>             
+                <primitive>
+                    <rectangle xy1="0 0" xy2="30 20" />
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="cementFloor" receiveshadows="true">
+            <transforms>
+                <translate value3="0 0 0"/>
+                <rotate value3="0 0 0" />
+            </transforms> 
+
+
+            <children>
+                <noderef id="cementFloor1" />
+                <noderef id="cementFloor2" />
+                <noderef id="cementFloor3" />
+                <noderef id="cementFloor4" />             
+            </children>
+
+        </node>
+        <node id="cementFloor1">
+            <transforms>
+                <translate value3="-25 0 10" />
+                <rotate value3="-1.57 0.0 0.0" />
+            </transforms> 
+
+            <materialref id="cementFloorMaterial1" />
+
+            <children>             
+                <primitive>
+                    <rectangle xy1="0 0" xy2="10 20" />
+                </primitive>
+            </children>
+        </node>
+        <node id="cementFloor2">
+            <transforms>
+                <translate value3="15 0 10" />
+                <rotate value3="-1.57 0.0 0.0" />
+            </transforms> 
+
+            <materialref id="cementFloorMaterial1" />
+
+            <children>             
+                <primitive>
+                    <rectangle xy1="0 0" xy2="10 20" />
+                </primitive>
+            </children>
+        </node>
+        <node id="cementFloor3">
+            <transforms>
+                <translate value3="-25 0 20" />
+                <rotate value3="-1.57 0.0 0.0" />
+            </transforms> 
+
+            <materialref id="cementFloorMaterial2" />
+
+            <children>             
+                <primitive>
+                    <rectangle xy1="0 0" xy2="50 10" />
+                </primitive>
+            </children>
+        </node>
+        <node id="cementFloor4">
+            <transforms>
+                <translate value3="-25 0 -10" />
+                <rotate value3="-1.57 0.0 0.0" />
+            </transforms> 
+
+            <materialref id="cementFloorMaterial2" />
+
+            <children>             
+                <primitive>
+                    <rectangle xy1="0 0" xy2="50 10" />
+                </primitive>
+            </children>
+        </node>
+        <node id="netPost1">
+            <transforms>
+                <translate value3="0 1.25 -12" />
+                <rotate value3="0 0 0" />
+            </transforms>
+            <materialref id="PostMaterial"/>
+            <children>
+                <primitive>
+                    <cylinder base="0.1" top="0.1" height="2.5" slices="20" stacks="20" />
+                </primitive>
+            </children>
+        </node>
+        <node id="netPost2">
+            <transforms>
+                <translate value3="0 1.25 12" />
+                <rotate value3="0 0 0" />
+            </transforms>
+            <materialref id="PostMaterial"/>
+            <children>
+                <primitive>
+                    <cylinder base="0.1" top="0.1" height="2.5" slices="20" stacks="20" />
+                </primitive>
+            </children>
+        </node>
+
+        <node id="net" >
+            <transforms>
+                <translate value3="0 0 11" />
+                <rotate value3="0.0 1.57 0.0" />
+            </transforms> 
+
+            <materialref id="netMaterial" />
+            
+            <children>             
+                <primitive>
+                    <rectangle xy1="0 0" xy2="22 2" parts_x="35" parts_y="10" />
+                </primitive>
+            </children> 
+        </node>
+        <node id="netRubber">
+            <transforms>
+                <translate value3="0 0 0" />
+                <rotate value3="0 0 0" />
+            </transforms> 
+
+            <materialref id="rubberMaterial" />
+            
+            <children>
+                <noderef id="netRubber1" />
+                <noderef id="netRubber2" />
+                <noderef id="netRubber3" />
+            </children>
+        </node>
+        <node id="netRubber1">
+            <transforms>
+                <translate value3="0 2 11" />
+                <rotate value3="0.0 1.57 0.0" />
+            </transforms> 
+            
+            <children>             
+                <primitive>
+                    <rectangle xy1="0 0" xy2="22 0.1"/>
+                </primitive>
+            </children> 
+        </node>
+        <node id="netRubber2">
+            <transforms>
+                <translate value3="0 0 11" />
+                <rotate value3="1.57 1.57 0.0" />
+            </transforms> 
+
+            
+            <children>             
+                <primitive>
+                    <rectangle xy1="0 0" xy2="2.1 0.1"/>
+                </primitive>
+            </children> 
+        </node>
+        <node id="netRubber3">
+            <transforms>
+                <translate value3="0 0 -11.1" />
+                <rotate value3="1.57 1.57 0.0" />
+            </transforms> 
+            
+            <children>             
+                <primitive>
+                    <rectangle xy1="0 0" xy2="2.1 0.1"/>
+                </primitive>
+            </children> 
+        </node>
+
+        <node id="netString1">
+            <transforms>
+                <translate value3="0 2 11.5" />
+                <rotate value3="1.04719755 0 0" />
+            </transforms> 
+            <materialref id="rubberMaterial"/>
+            <children>             
+                <primitive>
+                    <cylinder base="0.05" top="0.05" height="1" slices="20" stacks="20" />
+                </primitive>
+            </children>
+        </node>
+        <node id="netString2">
+            <transforms>
+                <translate value3="0 2 -11.5" />
+                <rotate value3="-1.04719755 0 0" />
+            </transforms> 
+            <materialref id="rubberMaterial"/>
+            <children>             
+                <primitive>
+                    <cylinder base="0.05" top="0.05" height="1" slices="20" stacks="20" />
+                </primitive>
+            </children>
+        </node>
+
+        <node id="netComposite">
+            <transforms>
+                <translate value3="0 0 0" />
+                <rotate value3="0 0 0" />
+            </transforms> 
+            <children>
+                <noderef id="netPost1" />
+                <noderef id="netPost2" />
+                <noderef id="net"/>
+                <noderef id="netRubber"/>
+                <noderef id="netString1"/>
+                <noderef id="netString2"/>
+            </children>
+        </node>
+
+        <node id="bench-L">
+            <transforms>
+                <translate value3="0 4 -4.55" />
+            </transforms>
+
+            <children>        
+                <noderef id="bench-wood" /> 
+                <noderef id="bench-support-r-L"/> 
+                <noderef id="bench-support-l-L"/> 
+                <noderef id="bench-metal-bot-bar-L" /> 
+            </children>
+
+        </node>
+
+        <node id="bench-metal-bot-bar-L">
+            <transforms>
+                <translate value3="0 -5.5 0" />
+                <scale value3="1.9 1 1" />
+            </transforms>
+
+            <children>
+                <noderef id="bench-bar" /> 
+            </children>
+            
+            <materialref id="bench-metal" />
+        </node>
+
+        <node id="bench-support-r-L">
+            <transforms>
+                <translate value3="-5.85 -0.3 0" />
+            </transforms>
+
+            <children>
+                <noderef id="bench-metal-top" />
+                <noderef id="bench-metal-mid-1-L" /> 
+                <noderef id="bench-metal-mid-2-L" /> 
+                <noderef id="bench-metal-bot-L" /> 
+
+            </children>
+            
+            <materialref id="bench-metal" />
+        </node>
+
+        <node id="bench-support-l-L">
+            <transforms>
+                <translate value3="5.85 -0.3 0" />
+            </transforms>
+
+            <children>
+                <noderef id="bench-metal-top" />
+                <noderef id="bench-metal-mid-1-L" /> 
+                <noderef id="bench-metal-mid-2-L" /> 
+                <noderef id="bench-metal-bot-L" /> 
+
+            </children>
+            
+            <materialref id="bench-metal" />
+        </node>
+
+        <node id="bench-metal-mid-1-L">
+            <transforms>
+                <scale value3="0.95 1 0.6"/>
+                <rotate value3="0 0 1.57" />
+                <translate value3="0 -2.95 -1" />
+            </transforms>
+            <children>
+                <noderef id="bench-bar" /> 
+            </children>
+        </node>
+
+        <node id="bench-metal-mid-2-L">
+            <transforms>
+                <scale value3="0.95 1 0.6"/>
+                <rotate value3="0 0 1.57" />
+                <translate value3="0 -2.95 1" />
+            </transforms>
+            <children>
+                <noderef id="bench-bar" /> 
+
+            </children>
+        </node>
+
+        <node id="bench-metal-bot-L">
+            <transforms>
+                <scale value3="0.38 1 0.6"/>
+                <rotate value3="0 1.57 0" />
+                <translate value3="0 -5.2 0" />
+            </transforms>
+            <children>
+                <noderef id="bench-bar" /> 
+            </children>
+        </node>
+
+        <node id="bench-M">
+            <transforms>
+                <translate value3="0 2 -2.27" />
+            </transforms>
+
+            <children>        
+                <noderef id="bench-wood" /> 
+                <noderef id="bench-support-r-M"/> 
+                <noderef id="bench-support-l-M"/> 
+                <noderef id="bench-metal-bot-bar-M"/> 
+            </children>
+
+        </node>
+
+        <node id="bench-metal-bot-bar-M">
+            <transforms>
+                <translate value3="0 -3.5 0" />
+                <scale value3="1.9 1 1" />
+            </transforms>
+
+            <children>
+                <noderef id="bench-bar" /> 
+            </children>
+            
+            <materialref id="bench-metal" />
+        </node>
+
+        <node id="bench-support-r-M">
+            <transforms>
+                <translate value3="-5.85 -0.3 0" />
+            </transforms>
+
+            <children>
+                <noderef id="bench-metal-top" />
+                <noderef id="bench-metal-mid-1-M" /> 
+                <noderef id="bench-metal-mid-2-M" /> 
+                <noderef id="bench-metal-bot-M" /> 
+
+            </children>
+            
+            <materialref id="bench-metal" />
+        </node>
+
+        <node id="bench-support-l-M">
+            <transforms>
+                <translate value3="5.85 -0.3 0" />
+            </transforms>
+
+            <children>
+                <noderef id="bench-metal-top" />
+                <noderef id="bench-metal-mid-1-M" /> 
+                <noderef id="bench-metal-mid-2-M" /> 
+                <noderef id="bench-metal-bot-M" /> 
+
+            </children>
+            
+            <materialref id="bench-metal" />
+        </node>
+
+        <node id="bench-metal-mid-1-M">
+            <transforms>
+                <scale value3="0.65 1 0.6"/>
+                <rotate value3="0 0 1.57" />
+                <translate value3="0 -1.85 -1" />
+            </transforms>
+            <children>
+                <noderef id="bench-bar" /> 
+            </children>
+        </node>
+
+        <node id="bench-metal-mid-2-M">
+            <transforms>
+                <scale value3="0.65 1 0.6"/>
+                <rotate value3="0 0 1.57" />
+                <translate value3="0 -1.85 1" />
+            </transforms>
+            <children>
+                <noderef id="bench-bar" /> 
+
+            </children>
+        </node>
+
+        <node id="bench-metal-bot-M">
+            <transforms>
+                <scale value3="0.38 1 0.6"/>
+                <rotate value3="0 1.57 0" />
+                <translate value3="0 -3.2 0" />
+            </transforms>
+            <children>
+                <noderef id="bench-bar" /> 
+            </children>
+        </node>
+
+    
+        <node id="bench-S">
+
+            <children>        
+                <noderef id="bench-wood" /> 
+                <noderef id="bench-support-r-S"/> 
+                <noderef id="bench-support-l-S"/> 
+                <noderef id="bench-metal-bot-bar-S"/> 
+            </children>
+
+        </node>
+
+        <node id="bench-metal-bot-bar-S">
+            <transforms>
+                <translate value3="0 -1.5 0" />
+                <scale value3="1.9 1 1" />
+            </transforms>
+
+            <children>
+                <noderef id="bench-bar" /> 
+            </children>
+            
+            <materialref id="bench-metal" />
+        </node>
+
+        <node id="bench-support-r-S">
+            <transforms>
+                <translate value3="-5.85 -0.3 0" />
+            </transforms>
+
+            <children>
+                <noderef id="bench-metal-top" />
+                <noderef id="bench-metal-mid-1" /> 
+                <noderef id="bench-metal-mid-2" /> 
+                <noderef id="bench-metal-bot" /> 
+
+            </children>
+            
+            <materialref id="bench-metal" />
+        </node>
+
+        <node id="bench-support-l-S">
+            <transforms>
+                <translate value3="5.85 -0.3 0" />
+            </transforms>
+
+            <children>
+                <noderef id="bench-metal-top" />
+                <noderef id="bench-metal-mid-1" /> 
+                <noderef id="bench-metal-mid-2" /> 
+                <noderef id="bench-metal-bot" /> 
+
+            </children>
+            
+            <materialref id="bench-metal" />
+        </node>
+
+        <node id="bench-metal-bot">
+            <transforms>
+                <scale value3="0.38 1 0.6"/>
+                <rotate value3="0 1.57 0" />
+                <translate value3="0 -1.2 0" />
+            </transforms>
+            <children>
+                <noderef id="bench-bar" /> 
+            </children>
+        </node>
+
+        <node id="bench-metal-mid-1">
+            <transforms>
+                <scale value3="0.3 1 0.6"/>
+                <rotate value3="0 0 1.57" />
+                <translate value3="0' -0.9 -1" />
+            </transforms>
+            <children>
+                <noderef id="bench-bar" /> 
+            </children>
+        </node>
+
+        <node id="bench-metal-mid-2">
+            <transforms>
+                <scale value3="0.3 1 0.6"/>
+                <rotate value3="0 0 1.57" />
+                <translate value3="0 -0.9 1" />
+            </transforms>
+            <children>
+                <noderef id="bench-bar" /> 
+
+            </children>
+        </node>
+
+        
+        <node id="bench-metal-top">
+            <transforms>
+                <scale value3="0.38 1 0.6"/>
+                <rotate value3="0 1.57 0" />
+                <translate value3="0 0 0" />
+            </transforms>
+            <children>
+                <noderef id="bench-bar" /> 
+
+            </children>
+        </node>
+
+        <node id="bench-wood">
+            <transforms>
+                <scale value3="2 1 1"/>
+            </transforms>
+
+            <children>        
+                <noderef id="bench-wood-bar1" /> 
+                <noderef id="bench-wood-bar2" /> 
+                <noderef id="bench-wood-bar3" /> 
+                <noderef id="bench-wood-bar4" /> 
+            </children>
+
+            <materialref id="bench-wood" />
+        </node>
+
+        <node id="bench-bar">
+
+            <children>        
+                <primitive>
+                    <box xyz1="-3 -0.15 -0.23" xyz2="3 0.15 0.23" />
+                </primitive>
+            </children>
+        </node>
+
+        <node id="bench-wood-bar1">
+        
+            <transforms>
+                <translate value3="0 0 -0.9" />
+            </transforms>
+
+            <children>        
+                <noderef id="bench-bar" /> 
+            </children>
+        </node>
+
+        <node id="bench-wood-bar2">
+        
+            <transforms>
+                <translate value3="0 0 -0.3" />
+            </transforms>
+
+            <children>        
+                <noderef id="bench-bar" /> 
+            </children>
+        </node>
+
+        <node id="bench-wood-bar3">
+        
+            <transforms>
+                <translate value3="0 0 0.3" />
+            </transforms>
+
+            <children>        
+                <noderef id="bench-bar" /> 
+            </children>
+        </node>
+
+        <node id="bench-wood-bar4">
+        
+            <transforms>
+                <translate value3="0 0 0.9" />
+            </transforms>
+
+            <children>        
+                <noderef id="bench-bar" /> 
+            </children>
+        </node>
+
+        <node id="shoppingCart">
+            <transforms>
+                <translate value3="12 1.19 -12" />
+                <rotate value3="0 3.14 0" />
+            </transforms>
+
+            <children>
+                <noderef id="shoppingCartBase" />
+                <noderef id="cartHandle" />
+                <noderef id="cartLegs" />
+                <noderef id="tennisBalls" />
+            </children>
+        </node>
+
+        <node id="tennisBalls">
+            <transforms>
+                <translate value3="0 0 0" />
+                <rotate value3="0 0 0" />
+            </transforms>
+
+            <children>
+                <noderef id="tennisBallPart1" />
+                <noderef id="tennisBallPart2" />
+                <noderef id="tennisBallPart3" />
+            </children>
+        </node>
+
+        <node id="tennisBallPart1">
+            <children>
+                <noderef id="tennisBalls1" />
+                <noderef id="tennisBalls2" />
+                <noderef id="tennisBalls3" />
+            </children>
+        </node>
+
+        <node id="tennisBallPart2">
+            <transforms>
+                <translate value3="0.1 0.23 0.1" />
+            </transforms>
+            <children>
+                <noderef id="tennisBalls1" />
+                <noderef id="tennisBalls2" />
+                <noderef id="tennisBalls3" />
+            </children>
+        </node>
+
+        <node id="tennisBallPart3">
+            <transforms>
+                <translate value3="0 0.46 0" />
+            </transforms>
+            <children>
+                <noderef id="tennisBalls1" />
+                <noderef id="tennisBalls2" />
+                <noderef id="tennisBalls3" />
+            </children>
+        </node>
+
+        <node id="shoppingCartBase">
+            <transforms>
+                <translate value3="0 0.1 0" />
+                <rotate value3="3.14 0.785 0" />
+                <scale value3="2 2 2" />
+            </transforms>
+
+            <children>
+                <primitive>
+                    <cylinder base="0.73" top="0.59" height="0.5" slices="4" stacks="15"/>
+                </primitive>
+            </children>
+            <materialref id="shoppingCartMaterial1" />
+        </node>
+
+        <node id="cartHandle">
+            <transforms>
+                <translate value3="0 0.5 0" />
+                <rotate value3="0 0 0" />
+            </transforms>
+
+            <children>
+                <noderef id="cartHandleBase" />
+                <noderef id="cartHandleBar1" />
+                <noderef id="cartHandleBar2" />
+            </children>
+        </node>
+
+        <node id="cartHandleBase">
+            <transforms>
+                <translate value3="-1.48 0.62 0" />
+                <rotate value3="1.57 0 0" />
+            </transforms>
+
+            <children>
+                <primitive>
+                    <cylinder base="0.1" top="0.1" height="2" slices="20" stacks="20" />
+                </primitive>
+            </children>
+            <materialref id="shoppingCartMaterial" />
+        </node>
+
+        <node id="cartHandleBar1">
+            <transforms>
+                <translate value3="-1.2 0.3 -0.9" />
+                <rotate value3="0 0 0.785" />
+            </transforms>
+
+            <children>
+                <primitive>
+                    <cylinder base="0.05" top="0.05" height="1" slices="20" stacks="20" />
+                </primitive>
+            </children>
+            <materialref id="shoppingCartMaterial" />
+        </node>
+        <node id="cartHandleBar2">
+            <transforms>
+                <translate value3="-1.2 0.3 0.9" />
+                <rotate value3="0 0 0.785" />
+            </transforms>
+
+            <children>
+                <primitive>
+                    <cylinder base="0.05" top="0.05" height="1" slices="20" stacks="20" />
+                </primitive>
+            </children>
+            <materialref id="shoppingCartMaterial" />
+        </node>
+
+        <node id="cartLegs">
+            <transforms>
+                <translate value3="0 -0.3 0" />
+                <rotate value3="0 0 -0.261799" />
+            </transforms>
+
+            <children>
+                <noderef id="cartLeg1" />
+                <noderef id="cartLeg2" />
+                <noderef id="cartLeg3" />
+                <noderef id="cartLeg4" />
+            </children>
+        </node>
+
+        <node id="cartLeg1">
+            <transforms>
+                <translate value3="0.8 -0.85 1.5" />
+                <rotate value3="0 0 0" />
+            </transforms>
+
+            <children>
+                <noderef id="cartHandleBar1"/>
+                <noderef id="cartWheel" />
+            </children>
+        </node>
+        <node id="cartLeg2">
+            <transforms>
+                <translate value3="0.8 -0.85 0.5" />
+                <rotate value3="0 0 0" />
+            </transforms>
+
+            <children>
+                <noderef id="cartHandleBar1"/>
+                <noderef id="cartWheel" />
+            </children>
+        </node>
+        <node id="cartLeg3">
+            <transforms>
+                <translate value3="2 -0.55 1.5" />
+                <rotate value3="0 0 0" />
+            </transforms>
+
+            <children>
+                <noderef id="cartHandleBar1"/>
+                <noderef id="cartWheel" />
+            </children>
+        </node>
+        <node id="cartLeg4">
+            <transforms>
+                <translate value3="2 -0.55 0.5" />
+                <rotate value3="0 0 0" />
+            </transforms>
+
+            <children>
+                <noderef id="cartHandleBar1"/>
+                <noderef id="cartWheel" />
+            </children>
+        </node>
+
+        <node id="cartWheel">
+            <transforms>
+                <translate value3="-0.1.57 0 -0.9" />
+                <rotate value3="1.57 0 0" />
+            </transforms>
+
+            <children>
+                <primitive>
+                    <cylinder base="0.1" top="0.1" height="0.1" slices="20" stacks="20" />
+                </primitive>
+            </children>
+            <materialref id="wheelMaterial" />
+        </node>
+        <node id="tennisBalls1">
+            <children>
+                <noderef id="tennisBall1" />
+                <noderef id="tennisBall2" />
+                <noderef id="tennisBall3" />
+                <noderef id="tennisBall4" />
+                <noderef id="tennisBall5" />
+            </children>
+        </node>
+        <node id="tennisBalls2">
+            <transforms>
+                <translate value3="0.2 0 0.2" />
+            </transforms>
+            <children>
+                <noderef id="tennisBall1" />
+                <noderef id="tennisBall2" />
+                <noderef id="tennisBall3" />
+                <noderef id="tennisBall4" />
+                <noderef id="tennisBall5" />
+            </children>
+        </node>
+        <node id="tennisBalls3">
+            <transforms>
+                <translate value3="-0.3 0 -0.3" />
+            </transforms>
+            <children>
+                <noderef id="tennisBall1" />
+                <noderef id="tennisBall2" />
+                <noderef id="tennisBall3" />
+                <noderef id="tennisBall4" />
+                <noderef id="tennisBall5" />
+            </children>
+        </node>
+        <node id="tennisBall1">
+            <transforms>
+                <translate value3="0 -0.25 0" />
+                <rotate value3="0 0 0" />
+                <scale value3="0.25 0.25 0.25" />
+            </transforms>
+
+            <children>
+                <primitive>
+                    <sphere radius="0.5" slices="20" stacks="20" />
+                </primitive>
+            </children>
+            <materialref id="tennisBallMaterial" />
+        </node>
+        <node id="tennisBall2">
+            <transforms>
+                <translate value3="0 -0.25 0.5" />
+                <rotate value3="0 0 0" />
+                <scale value3="0.25 0.25 0.25" />
+            </transforms>
+
+            <children>
+                <primitive>
+                    <sphere radius="0.5" slices="20" stacks="20" />
+                </primitive>
+            </children>
+            <materialref id="tennisBallMaterial" />
+        </node>
+        <node id="tennisBall3">
+            <transforms>
+                <translate value3="0.5 -0.25 0" />
+                <rotate value3="0 0 0" />
+                <scale value3="0.25 0.25 0.25" />
+            </transforms>
+
+            <children>
+                <primitive>
+                    <sphere radius="0.5" slices="20" stacks="20" />
+                </primitive>
+            </children>
+            <materialref id="tennisBallMaterial" />
+        </node>
+        <node id="tennisBall4">
+            <transforms>
+                <translate value3="-0.5 -0.25 0" />
+                <rotate value3="0 0 0" />
+                <scale value3="0.25 0.25 0.25" />
+            </transforms>
+
+            <children>
+                <primitive>
+                    <sphere radius="0.5" slices="20" stacks="20" />
+                </primitive>
+            </children>
+            <materialref id="tennisBallMaterial" />
+        </node>
+        <node id="tennisBall5">
+            <transforms>
+                <translate value3="0 -0.25 -0.5" />
+                <rotate value3="0 0 0" />
+                <scale value3="0.25 0.25 0.25" />
+            </transforms>
+
+            <children>
+                <primitive>
+                    <sphere radius="0.5" slices="20" stacks="20" />
+                </primitive>
+            </children>
+            <materialref id="tennisBallMaterial" />
+        </node>
+        <node id="umpireChair">
+            <transforms>
+                <translate value3="-0.5 0.195 14.5" />
+            </transforms>
+
+            <children>
+                <noderef id="umpireChairLegs" />
+                <noderef id="umpireChairStairs" />
+                <noderef id="umpireChairSeat" />
+                <noderef id="umpireChairSunCover" />
+            </children>
+        </node>
+
+        <node id="umpireChairSunCover">
+            <transforms>
+                <translate value3="0.5 5 1.4" />
+            </transforms>
+
+            <children>
+                <noderef id="umpireChairSunPipe1" />
+                <noderef id="umpireChairSunPipe2" />
+                <noderef id="umpireChairSunCover1" />
+            </children>
+            <materialref id="rubberMaterial" />
+        </node>
+
+        <node id="umpireChairSunPipe1">
+            <transforms>
+                <translate value3="-0.5 0.5 0.15" />
+                <rotate value3="0 0 0" />
+            </transforms>
+
+            <children>
+                <primitive>
+                    <cylinder base="0.025" top="0.025" height="1" slices="20" stacks="20" />
+                </primitive>
+            </children>
+        </node>
+
+        <node id="umpireChairSunPipe2">
+            <transforms>
+                <translate value3="0.5 0.5 0.15" />
+                <rotate value3="0 0 0" />
+            </transforms>
+
+            <children>
+                <primitive>
+                    <cylinder base="0.025" top="0.025" height="1" slices="20" stacks="20" />
+                </primitive>
+            </children>
+        </node>
+
+        <node id="umpireChairSunCover1">
+            <transforms>
+                <translate value3="0.3 2.2 0.8" />
+                <rotate value3="-0.785 -1.57 -1.57" />
+                <scale value3="0.3 0.4 0.5" />
+            </transforms>
+
+            <children>
+                <primitive>
+                    <nurbs degree_u="2" degree_v="1" parts_u="20" parts_v="20" distance="0.0">
+                        <controlpoint xx="-4" yy="-4" zz="0" />
+                        <controlpoint xx="-4" yy="-4" zz="1" />
+                        <controlpoint xx="2.481" yy="-2.3" zz="-1.99" />
+                        <controlpoint xx="2.481" yy="-2.3" zz="2.99" />
+                        <controlpoint xx="2" yy="-4" zz="0" />
+                        <controlpoint xx="2" yy="-4" zz="1" />
+                        <controlpoint xx="4" yy="4" zz="0" />
+                        <controlpoint xx="4" yy="4" zz="1" />
+                    </nurbs>
+                </primitive>
+            </children>
+        </node>
+
+        <node id="umpireChairSeat">
+            <transforms>
+                <translate value3="0.5 4.8 1.4" />
+                <rotate value3="1.745329252 0 0" />
+            </transforms>
+
+            <children>
+                <primitive>
+                    <box xyz1="-0.4 0 -0.4" xyz2="0.4 0.1 0.4" />
+                </primitive>
+            </children>
+            <materialref id="chairMaterial"/>
+        </node>
+        <node id="umpireChairLegs">
+            <transforms>
+                <translate value3="0 0.4 0" />
+                <rotate value3="0 0 0" />
+            </transforms>
+
+            <children>
+                <noderef id="umpireChairLeg1" />
+                <noderef id="umpireChairLeg2" />
+                <noderef id="umpireChairLeg3" />
+                <noderef id="umpireChairLeg4" />
+            </children>
+            <materialref id="chairMaterial"/>
+        </node>
+        <node id="umpireChairLeg1">
+            <transforms>
+                <translate value3="0 2 0" />
+                <rotate value3="0.3490658504 0 0" />
+            </transforms>
+
+            <children>
+                <primitive>
+                    <cylinder base="0.1" top="0.1" height="5.5" slices="20" stacks="20" />
+                </primitive>
+            </children>
+        </node>
+        <node id="umpireChairLeg2">
+            <transforms>
+                <translate value3="1 2 0" />
+                <rotate value3="0.3490658504 0 0" />
+            </transforms>
+
+            <children>
+                <primitive>
+                    <cylinder base="0.1" top="0.1" height="5.5" slices="20" stacks="20" />
+                </primitive>
+            </children>
+        </node>
+        <node id="umpireChairLeg3">
+            <transforms>
+                <translate value3="1 2 1.8" />
+                <rotate value3="-0.017453292519943295 0 0" />
+            </transforms>
+
+            <children>
+                <primitive>
+                    <cylinder base="0.08" top="0.08" height="5.5" slices="20" stacks="20" />
+                </primitive>
+            </children>
+        </node>
+        <node id="umpireChairLeg4">
+            <transforms>
+                <translate value3="0 2 1.8" />
+                <rotate value3="-0.017453292519943295 0 0" />
+            </transforms>
+
+            <children>
+                <primitive>
+                    <cylinder base="0.08" top="0.08" height="5.5" slices="20" stacks="20" />
+                </primitive>
+            </children>
+        </node>
+        <node id="umpireChairStairs">
+            <transforms>
+                <translate value3="0 0 -0.1" />
+                <rotate value3="0 0 0" />
+            </transforms>
+
+            <children>
+                <noderef id="umpireChairStairBase" />
+                <noderef id="umpireChairStairHandle1" />
+                <noderef id="umpireChairStairHandle2" />
+                <noderef id="umpireChairStair1" />
+                <noderef id="umpireChairStair2" />
+                <noderef id="umpireChairStair3" />
+                <noderef id="umpireChairStair4" />
+                <noderef id="umpireChairStair5" />
+            </children>
+            <materialref id="rubberMaterial" />
+        </node>
+
+        <node id="umpireChairStairBase">
+            <transforms>
+                <translate value3="0.5 4.3 1.13"/>
+                <rotate value3="0 0 0"/>
+            </transforms>
+
+            <children>
+                <primitive>
+                    <box xyz1="-0.6 0 -0.4" xyz2="0.6 0.2 0.4"/>
+                </primitive>
+            </children>
+            <materialref id="chairMaterial"/>
+        </node>
+        <node id="umpireChairStairHandle1">
+            <transforms>
+                <translate value3="1 5.05 1.2"/>
+                <rotate value3="1.57 0 0"/>
+            </transforms>
+
+            <children>
+                <primitive>
+                    <cylinder base="0.1" top="0.1" height="1" slices="20" stacks="20"/>
+                </primitive>
+            </children>
+            <materialref id="chairMaterial"/>
+        </node>
+        <node id="umpireChairStairHandle2">
+            <transforms>
+                <translate value3="0 5.05 1.2"/>
+                <rotate value3="1.57 0 0"/>
+            </transforms>
+
+            <children>
+                <primitive>
+                    <cylinder base="0.1" top="0.1" height="1" slices="20" stacks="20"/>
+                </primitive>
+            </children>
+            <materialref id="chairMaterial"/>
+        </node>
+
+        <node id="umpireChairStair1">
+            <transforms>
+                <translate value3="0.5 0.5 -0.55" />
+                <rotate value3="0 0 0" />
+            </transforms>
+
+            <children>
+                <primitive>
+                    <box xyz1="-0.5 0 -0.1" xyz2="0.5 0.1 0.1"/>
+                </primitive>
+            </children>
+        </node>
+        <node id="umpireChairStair2">
+            <transforms>
+                <translate value3="0.5 1.3 -0.25" />
+                <rotate value3="0 0 0" />
+            </transforms>
+
+            <children>
+                <primitive>
+                    <box xyz1="-0.5 0 -0.1" xyz2="0.5 0.1 0.1"/>
+                </primitive>
+            </children>
+        </node>
+        <node id="umpireChairStair3">
+            <transforms>
+                <translate value3="0.5 2.0 0" />
+                <rotate value3="0 0 0" />
+            </transforms>
+
+            <children>
+                <primitive>
+                    <box xyz1="-0.5 0 -0.1" xyz2="0.5 0.1 0.1"/>
+                </primitive>
+            </children>
+        </node>
+        <node id="umpireChairStair4">
+            <transforms>
+                <translate value3="0.5 2.7 0.25" />
+                <rotate value3="0 0 0" />
+            </transforms>
+
+            <children>
+                <primitive>
+                    <box xyz1="-0.5 0 -0.1" xyz2="0.5 0.1 0.1"/>
+                </primitive>
+            </children>
+        </node>
+        <node id="umpireChairStair5">
+            <transforms>
+                <translate value3="0.5 3.4 0.5" />
+                <rotate value3="0 0 0" />
+            </transforms>
+
+            <children>
+                <primitive>
+                    <box xyz1="-0.5 0 -0.1" xyz2="0.5 0.1 0.1"/>
+                </primitive>
+            </children>
+        </node>
+
+        <node id="holofotes">
+            <children>
+                <noderef id="holofote1" />
+                <noderef id="holofote2" />
+                <noderef id="holofote3" />
+                <noderef id="holofote4" />
+            </children>
+
+        </node>
+
+        <node id="holofote1">
+            <transforms>
+                <translate value3="-15 0 15" />
+                <rotate value3="0 0 0" />
+            </transforms>
+
+            <children>
+                <noderef id="holofoteBase" />
+                <noderef id="holofotePole" />
+                <noderef id="holofoteLampSupport" />
+                <noderef id="holofoteLamp" />
+            </children>
+        </node>
+        <node id="holofote2">
+            <transforms>
+                <translate value3="-15 0 -15" />
+                <rotate value3="0 3.14 0" />
+            </transforms>
+
+            <children>
+                <noderef id="holofoteBase" />
+                <noderef id="holofotePole" />
+                <noderef id="holofoteLampSupport" />
+                <noderef id="holofoteLamp" />
+            </children>
+        </node>
+        <node id="holofote3">
+            <transforms>
+                <translate value3="15 0 15" />
+                <rotate value3="0 0 0" />
+            </transforms>
+
+            <children>
+                <noderef id="holofoteBase" />
+                <noderef id="holofotePole" />
+                <noderef id="holofoteLampSupport" />
+                <noderef id="holofoteLamp" />
+            </children>
+        </node>
+        <node id="holofote4">
+            <transforms>
+                <translate value3="15 0 -15" />
+                <rotate value3="0 3.14 0" />
+            </transforms>
+
+            <children>
+                <noderef id="holofoteBase" />
+                <noderef id="holofotePole" />
+                <noderef id="holofoteLampSupport" />
+                <noderef id="holofoteLamp" />
+            </children>
+        </node>
+        <node id="holofoteBase">
+            <transforms>
+                <translate value3="0 0 0" />
+                <rotate value3="0 0.785 0" />
+                <scale value3="2 2 2" />
+            </transforms>
+
+            <children>
+                <primitive>
+                    <cylinder base="0.6 " top="0.2" height="1" slices="4" stacks="15" />
+                </primitive>
+            </children>
+            <materialref id="PostMaterial" />
+        </node>
+        <node id="holofotePole">
+            <transforms>
+                <translate value3="0 0.5 0" />
+                <rotate value3="0 0 0" />
+            </transforms>
+
+            <children>
+                <primitive>
+                    <box xyz1="-0.2 0 -0.2" xyz2="0.2 12 0.2" />
+                </primitive>
+            </children>
+            <materialref id="PostMaterial" />
+        </node>
+        <node id="holofoteLampSupport">
+            <transforms>
+                <translate value3="0 12.2 -2.5" />
+                <rotate value3="0 0 0" />
+            </transforms>
+
+            <children>
+                <primitive>
+                    <box xyz1="-0.1 -0.1 -1.5" xyz2="0.1 0.1 2.5" />
+                </primitive>
+            </children>
+            <materialref id="PostMaterial" />
+        </node>
+        <node id="holofoteLamp">
+            <transforms>
+                <translate value3="0 11.85 -3.8" />
+                <rotate value3="0 0.785 0" />
+            </transforms>
+
+            <children>
+                <primitive>
+                    <cylinder base="0.6 " top="0.2" height="0.5" slices="4" stacks="15" />
+                </primitive>
+            </children>
+            <materialref id="lampMaterial" />
+        </node>
+        <node id="pretendBuilding">
+            <transforms>
+                <scale value3="1.1 1.1 1.1" />
+
+                <translate value3="1 0 10.5" />
+            </transforms>
+            <children>
+                <noderef id="pretendBuilding1" />
+                <noderef id="pretendBuilding2" />
+                <noderef id="pretendBuilding3" />
+                <noderef id="pretendBuilding4" />
+                <noderef id="pretendBuilding5" />
+            </children>
+        </node>
+        <node id="pretendBuilding1">
+            <transforms>
+                <translate value3="0 0 -60" />
+                <rotate value3="0 0 0" />
+            </transforms>
+            <children>
+                <primitive>
+                    <rectangle xy1="-20 0" xy2="20 40" />
+                </primitive>
+            </children>
+            <materialref id="pretendBuildingMaterial" />
+        </node>
+        <node id="pretendBuilding2">
+            <transforms>
+                <translate value3="0 0 -100" />
+                <rotate value3="0 0 0" />
+            </transforms>
+            <children>
+                <primitive>
+                    <rectangle xy1="-20 0" xy2="20 40" />
+                </primitive>
+            </children>
+            <materialref id="pretendBuildingMaterial2" />
+        </node>
+        <node id="pretendBuilding3">
+            <transforms>
+                <translate value3="-20 0 -80" />
+                <rotate value3="0 1.57 0" />
+            </transforms>
+            <children>
+                <primitive>
+                    <rectangle xy1="-20 0" xy2="20 40" />
+                </primitive>
+            </children>
+            <materialref id="pretendBuildingMaterial2" />
+        </node>
+
+        <node id="pretendBuilding4">
+            <transforms>
+                <translate value3="20 0 -80" />
+                <rotate value3="0 1.57 0" />
+            </transforms>
+            <children>
+                <primitive>
+                    <rectangle xy1="-20 0" xy2="20 40" />
+                </primitive>
+            </children>
+            <materialref id="pretendBuildingMaterial2" />
+        </node>
+        <node id="pretendBuilding5">
+            <transforms>
+                <translate value3="0 40 -80" />
+                <rotate value3="1.57 0 0" />
+            </transforms>
+            <children>
+                <primitive>
+                    <rectangle xy1="-20 -20" xy2="20 20" />
+                </primitive>
+            </children>
+            <materialref id="blackMaterial" />
+        </node>
+    </graph>
+
+</yaf>
