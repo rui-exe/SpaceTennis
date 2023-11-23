@@ -6,8 +6,11 @@
 | Afonso Baldo         |  up202004598@edu.fe.up.pt               |
 | Rui Pires         | up202008252@edu.fe.up.pt      
 ## University
+
 - [Faculty of Engineering of the University of Porto](https://sigarra.up.pt/feup/en/web_page.Inicial)
+
 ![Faculty of Engineering of the University of Porto](https://sigarra.up.pt/feup/pt/imagens/LogotipoSI)
+
 ## Project Information
 - This project was developed for the Interactive Graphics Systems course of the Master in Informatics and Computing Engineering at FEUP [(MIEIC-FEUP)](https://sigarra.up.pt/feup/en/cur_geral.cur_view?pv_curso_id=742&pv_ano_lectivo=2020).
 - The project was developed using [Three.js](https://threejs.org/).
